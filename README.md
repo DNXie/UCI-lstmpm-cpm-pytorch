@@ -1,4 +1,4 @@
-# uci_lstmpm-cpm_pytorch
+# UCI lstmpm/cpm pytorch
 
 
 
