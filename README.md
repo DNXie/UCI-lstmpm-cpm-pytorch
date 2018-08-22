@@ -20,13 +20,9 @@ To install the environment, simply run `conda env create -f environment.yml`.
 
 ## Developer
 
-- [Danning Xie](https://github.com/DNXie)
-
 - [Haoyu Ma](https://github.com/HowieMa)
 
-  
-
-  
+- [Danning Xie](https://github.com/DNXie)
 
 
 
