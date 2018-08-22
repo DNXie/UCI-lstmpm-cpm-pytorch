@@ -10,6 +10,14 @@ This is a Pytorch implementation of [ LSTM Pose Machines](https://arxiv.org/pdf/
 
 Code `./cpm/cpm_model.py ` comes from [this repo](https://github.com/JindongJiang/WeightedLoss_Convolutional_Pose_Machines_PyTorch).
 
+
+## Installation
+
+Conda environment for this project has been uploaded to the repository as `./environment.yml`.
+
+To install the environment, simple run `conda env create -f environment.yml`.
+
+
 ## Developer
 
 - [Danning Xie](https://github.com/DNXie)
