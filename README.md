@@ -15,7 +15,9 @@ Code `./cpm/cpm_model.py ` comes from [this repo](https://github.com/JindongJian
 
 Conda environment for this project has been uploaded to the repository as `./environment.yml`.
 
-To install the environment, simply run `conda env create -f environment.yml`.
+To install the environment, simply run :
+
+`conda env create -f environment.yml`.
 
 
 ## Developer
