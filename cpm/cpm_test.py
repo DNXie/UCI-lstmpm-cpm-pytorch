@@ -33,8 +33,8 @@ nb_joint = 21
 nb_stage = 6
 background = False
 if_sum = False
-if_max = True
-if_save = False #if save image
+if_max = False
+if_save = True #if save image
 out_c = nb_joint+1 if background else nb_joint
 heat_weight = 45 * 45 * out_c / 1.0
 path_root = '/home/danningx/danningx/cpm_xdn/8-18/test_all/'
@@ -46,7 +46,7 @@ ckpt_path = '/home/danningx/danningx/cpm_xdn/8-18/checkpoint/cpm_30'
 
 
 save_json_path = os.path.join(path_root, "test_history.json")
-save_test_heatmap_path = utils.mkdir(os.path.join(path_root, "test_heatmaps"))
+save_test_heatmap_path = utils.mkdir(os.path.join(path_root, "heatmaps/"))
 if if_sum:
     save_sum_path = os.path.join(path_root, "sum_history.json")
 if if_max:
@@ -101,7 +101,7 @@ for idx, (images, label_map, center_map, imgs) in enumerate(test_dataset):
     runtime_pck.append(utils.cpm_evaluation(label_map, predict_heatmaps, sigma=0.04))
     img_name.append(imgs)
     if if_save:
-        utils.save_image_cpm(save_test_heatmap_path+'idx_'+str(idx)+'_b', predict_heatmaps, label_map)
+        utils.save_image_cpm(save_test_heatmap_path+'idx_'+str(idx), predict_heatmaps, label_map)
     if if_sum:
         for stg in predict_heatmaps[0]:
             for j, hm in enumerate(stg):

@@ -84,8 +84,8 @@ def save_image_cpm(save_path, pred_heatmap, label_map, size=45, nb_heatmap=21, n
         else:
             s = np.zeros((size, size*(1+nb_stage))) 
             
-        for j in range(nb_stage):  # each stage
-            for k in range(nb_heatmap):
+        for k in range(nb_heatmap):
+            for j in range(nb_stage):  # each stage
                 s[:, j*45:(j+1)*45]+=pred_heatmap[i,j,k,:,:].cpu().data.numpy()
             if label_map is not None:
                 s[:, -45:]+=label_map[i , k, :, :]
