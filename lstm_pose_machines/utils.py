@@ -102,14 +102,19 @@ def lstm_pm_evaluation(label_map, predict_heatmaps, sigma=0.04, temporal=5):
     return sum(pck_eval) / float(len(pck_eval))  #
 
 
-def cpm_evaluation(label_map, predict_heatmaps,nb_stage=6, sigma=0.04):
+def cpm_evaluation(label_map, predict_heatmaps,nb_stage=6, sigma=0.04, avg=False):
     pck_eval = []
     for b in range(label_map.shape[0]):        # for each batch (person)
-        for s in range(nb_stage):
-            target = np.asarray(label_map[b, :, :, :].data)
-            predict = np.asarray(predict_heatmaps[b,s, :, :, :].data)
+        target = np.asarray(label_map[b, :, :, :].data)
+        if avg:  #average PCK among each stage
+            for s in range(nb_stage):
+                predict = np.asarray(predict_heatmaps[b,s, :, :, :].data)
+                pck_eval.append(PCK(predict, target, sigma=sigma))
+        else:
+            predict = np.asarray(predict_heatmaps[b,-1, :, :, :].data)
             pck_eval.append(PCK(predict, target, sigma=sigma))
-
+            
+            
     return sum(pck_eval) / float(len(pck_eval))  #
 
 def PCK(predict, target, label_size=45, sigma=0.04):
